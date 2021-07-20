@@ -1,0 +1,70 @@
+{% extends 'acceuil.html.twig' %}
+
+{% block title %}Gestion de sortie{% endblock %}
+
+{% block body %}
+
+
+ 
+<div class="col-md-12">
+
+    <div class="card">
+        <div class="card-header">
+            <h5>Gestion des ventes</h5>
+            <!--<span>Add class of <code>.form-control</code> with <code>&lt;input&gt;</code> tag</span>-->
+        </div>
+        <div class="card-block">
+            {% if error_message is defined %}
+                <div class="alert alert-danger">{{ error_message}}</div>
+            {% endif %}
+            
+            {{ form(form) }}  
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-header">
+            <h2>Liste des ventes</h2>
+            <div class="card-header-right">
+                <ul class="list-unstyled card-option">
+                    <li><i class="fa fa-window-maximize full-card"></i></li>
+                    <li><i class="fa fa-minus minimize-card"></i></li>
+                </ul>
+            </div>
+        </div>
+        <div class="card-block table-border-style">
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Date</th>
+                            <th>Quantité vendue</th>
+                            <th>Produit</th>
+                            <th>Action</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for s in sorties %}
+							<tr>
+								<td>{{s.id}}</td>
+								<td>{{s.dateS|date("m/d/Y")}}</td>
+                                <td>{{s.qteS}}</td>
+                                <td>{{s.produit}}</td>
+                                <td>
+									<a class="btn btn-warning waves-effect waves-light" href="">Edit</a>
+								</td>
+								<td>
+			                  		<a class="btn btn-danger waves-effect waves-light" href="">Supprimer</a>
+								</td>
+							</tr>
+                        {% endfor %}
+					</tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>             
+
+
+{% endblock %}

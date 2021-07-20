@@ -1,0 +1,61 @@
+{% extends 'acceuil.html.twig' %}
+
+{% block title %}Gestion de produit{% endblock %}
+
+{% block body %}
+  
+<div class="col-md-12">
+
+    <div class="card">
+        <div class="card-header">
+            <h5>Ajouter un produit</h5>
+            <!--<span>Add class of <code>.form-control</code> with <code>&lt;input&gt;</code> tag</span>-->
+        </div>
+        <div class="card-block">
+            {{ form(form) }}  
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-header">
+            <h2>Liste des produits</h2>
+            <div class="card-header-right">
+                <ul class="list-unstyled card-option">
+                    <li><i class="fa fa-window-maximize full-card"></i></li>
+                    <li><i class="fa fa-minus minimize-card"></i></li>
+                </ul>
+            </div>
+        </div>
+        <div class="card-block table-border-style">
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Libelle</th>
+                            <th>Quantité Stock</th>
+                            <th>Action</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for p in produits %}
+							<tr>
+								<td>{{p.id}}</td>
+								<td>{{p.libelle}}</td>
+                                <td>{{p.qteStock}}</td>
+                                <td>
+									<a class="btn btn-warning waves-effect waves-light" href="">Edit</a>
+								</td>
+								<td>
+			                  		<a class="btn btn-danger waves-effect waves-light" href="">Supprimer</a>
+								</td>
+							</tr>
+                        {% endfor %}
+					</tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>                               
+
+{% endblock %}

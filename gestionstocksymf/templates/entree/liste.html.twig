@@ -1,0 +1,64 @@
+{% extends 'acceuil.html.twig' %}
+
+{% block title %}Gestion des entree{% endblock %}
+
+{% block body %}
+
+ 
+<div class="col-md-12">
+
+    <div class="card">
+        <div class="card-header">
+            <h5>Gestion des achats</h5>
+            <!--<span>Add class of <code>.form-control</code> with <code>&lt;input&gt;</code> tag</span>-->
+        </div>
+        <div class="card-block">
+            {{ form(form) }}  
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-header">
+            <h2>Liste des achats</h2>
+            <div class="card-header-right">
+                <ul class="list-unstyled card-option">
+                    <li><i class="fa fa-window-maximize full-card"></i></li>
+                    <li><i class="fa fa-minus minimize-card"></i></li>
+                </ul>
+            </div>
+        </div>
+        <div class="card-block table-border-style">
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Date</th>
+                            <th>Quantité achetée</th>
+                            <th>Produit</th>
+                            <th>Action</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for e in entrees %}
+							<tr>
+								<td>{{e.id}}</td>
+								<td>{{e.dateE|date("m/d/Y")}}</td>
+                                <td>{{e.qteE}}</td>
+                                <td>{{e.produit}}</td>
+                                <td>
+									<a class="btn btn-warning waves-effect waves-light" href="">Edit</a>
+								</td>
+								<td>
+			                  		<a class="btn btn-danger waves-effect waves-light" href="">Supprimer</a>
+								</td>
+							</tr>
+                        {% endfor %}
+					</tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>             
+
+{% endblock %}
